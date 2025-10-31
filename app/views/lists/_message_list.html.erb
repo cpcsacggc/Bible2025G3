@@ -1,0 +1,18 @@
+<% msg_list = list&.msg&.split(/\r?\n/) || [] %>
+<table class="message-links-table">
+  <% msg_list.each do |msg| %>
+    <% next if msg.strip.empty? %>
+    <tr class="text-center">
+      <td class="text-left"><%= msg.strip %></td>
+      <td class="text-left">
+        <a href="<%= bible_search_url(msg) %>" target="_blank">Bible.ru</a>
+      </td>
+      <td class="text-center">
+        <a href="<%= yandex_search_url(msg) %>" target="_blank">Yandex</a>
+      </td>
+      <td class="text-right">
+        <a href="<%= rutube_search_url(msg) %>" target="_blank">RuTube</a>
+      </td>
+    </tr>
+  <% end %>
+</table>

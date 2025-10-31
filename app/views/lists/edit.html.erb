@@ -1,0 +1,10 @@
+<h1 align="center">Editing List</h1>
+<%= render "form", list: @list, page: @page %>
+
+<table class="table table-borderless table-sm table-dark" style="margin:auto;width:450px;">
+  <tr>
+    <td class="text-end"><%= link_to 'Show', @list, class: "btn btn-outline-light btn-sm" %></td>
+    <td class="text-start"><%= link_to 'Back', lists_path(page: @page), class: "btn btn-outline-light btn-sm" %></td>
+  </tr>
+</table>
+

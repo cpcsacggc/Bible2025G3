@@ -1,0 +1,62 @@
+<table class="col-md-6 table table-bordered table-sm table-dark list-table">
+  <tr class="action-row">
+    <td class="text-center w-33"><%= link_to "Show", list_path(list, page: current_page_param), class: "btn btn-outline-light btn-sm" %>
+    </td>
+    <td class="text-center w-33">
+      <%= link_to "Edit", edit_list_path(list, page: current_page_param), class: "btn btn-outline-light btn-sm" %>
+    </td>
+    <td class="text-center w-33">
+      <%= button_to "Destroy", list_path(list, page: current_page_param),
+                    class: "btn btn-outline-light btn-sm",
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+
+  <tr class="date-row">
+    <td class="text-center" colspan="3">
+      <%= list.date.to_date.strftime('%a %b %d, %Y') %> - Day <%= list.day %> of 365
+    </td>
+  </tr>
+
+  <tr class="list-row">
+    <td class="list-title-right" colspan="2"><%= list.title %></td>
+    <td class="list-action-left">
+      <%= button_tag "Copy Text",
+                     type: "button",
+                     class: "btn btn-outline-light btn-sm copy-text-td-left-btn",
+                     data: { action: "copy-left-text" },
+                     "aria-label": "Copy #{list.title}" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3" class="messages-container">
+      <%= render partial: 'message_list', locals: { list: list } %>
+    </td>
+  </tr>
+
+  <tr class="footer-row">
+    <td class="text-left">
+      <button type="button" class="btn btn-outline-light btn-sm" onclick="CopyMyTd(this)">
+        Copy Text
+      </button>
+    </td>
+    <td class="text-center">
+      <button type="button" class="btn btn-outline-light btn-sm" onclick="eURLsCPtoCB(this);">
+        Copy URL
+      </button>
+    </td>
+    <td class="text-right">
+      <%= link_to "Y1",
+                  "https://www.youtube.com/@vbible/search?query=#{l list.date.to_date, format: :md}",
+                  target: "_blank",
+                  class: "btn btn-outline-light btn-sm" %>
+      &nbsp;
+      <%= link_to "Y2",
+                  "https://www.youtube.com/@OlgaGolikova1/search?query=#{l list.date.to_date, format: :mdy}",
+                  target: "_blank",
+                  class: "btn btn-outline-light btn-sm" %>
+    </td>
+  </tr>
+</table>

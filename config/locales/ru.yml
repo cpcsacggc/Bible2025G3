@@ -1,0 +1,46 @@
+ru:
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d %b"
+      long: "%d %B %Y"
+      md: "%d %B"
+      mdy: "%d %B, %Y"
+    order:
+      - :day
+      - :month
+      - :year
+
+    month_names:
+      - ~
+      - Января
+      - Февраля
+      - Марта
+      - Апреля
+      - Мая
+      - Июня
+      - Июля
+      - Августа
+      - Сентября
+      - Октября
+      - Ноября
+      - Декабря
+    abbr_month_names:
+      - ~
+      - Янв
+      - Фев
+      - Мар
+      - Апр
+      - Май
+      - Июн
+      - Июл
+      - Авг
+      - Сен
+      - Окт
+      - Ноя
+      - Дек
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M:%S"
+      short: "%d %b %H:%M"
+      long: "%d %B %Y %H:%M"

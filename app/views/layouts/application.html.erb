@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bible-2025G3</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body class="bg-dark">
+  <!-- Be careful when loading scripts from external sources -->
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          document.addEventListener('click', function(e) {
+              if (e.target.matches('.copy-text-td-left-btn')) {
+                  CopyMyLeftTd(e.target);
+              }
+          });
+      });
+      function CopyMyLeftTd(e) {
+          location.reload();
+          var leftTdIndex= $(e).parent().index()-1;
+          var leftTd= $(e).closest("tr").find("td:eq(" + leftTdIndex + ")");
+          copyToClipboard($(leftTd).text());
+      }
+      function CopyMyRTd(e) {
+          location.reload();
+          var rTdIndex= $(e).parent().index()+1;
+          var rTd= $(e).closest("tr").find("td:eq(" + rTdIndex + ")");
+          copyToClipboard($(rTd).text());
+      }
+      function CopyMyR2Td(e) {
+          location.reload();
+          var r2TdIndex= $(e).parent().index()+2;
+          var r2Td= $(e).closest("tr").find("td:eq(" + r2TdIndex + ")");
+          copyToClipboard($(r2Td).text());
+      }
+      function CopyMyTd(e) {
+          location.reload();
+          try {
+              let $tbl = $(e).closest('table');
+              if (!$tbl.length) throw new Error('No Table Found');
+              let $lastTr = $tbl.find("tr:last");
+              if (!$lastTr.length) throw new Error('No Last Row Found');
+              let $firstTd = $lastTr.find("td:first");
+              if (!$firstTd.length) throw new Error('No First TD Found');
+              let $nextTable = $tbl.find("table:first");
+              if (!$nextTable.length) throw new Error('No Table Found');
+              let Row = $nextTable.find("tr");
+              if (Row.length == 0) throw new Error('No Row Found');
+              let data = extractTds(Row);
+              let strData = data.join("\n");
+              //alert(strData);
+              copyToClipboard(strData);
+          } catch (err) {
+              console.error('copy text failed ', err);
+          }
+      }
+      function eURLsCPtoCB(e) {
+          location.reload();
+          try {
+              //let tbl = $(e).parent().parent().parent().parent().get(0);
+              let tbl = $(e).closest('table');
+              if (tbl.length == 0) throw 'No Table Found';
+              let lastTr = $(tbl).parent().find("tr:last");
+              if (lastTr.length == 0) throw 'No Last Row Found';
+              let firstTd = $(lastTr).find("td:first");
+              if (firstTd.length == 0) throw 'No First TD Found';
+              let nextTable = $(tbl).find("table:first");
+              if (nextTable.length == 0) throw 'No Table Found';
+              let Row = $(nextTable).find("tr");
+              if (Row.length == 0) throw 'No Row Found';
+              let data = extractSecondCellLinks(Row);
+              let strData = data.join("\n");
+              //alert(strData);
+              copyToClipboard(strData);
+          } catch (err) {
+                  alert('failed to extact url: '+ err);
+          }
+      }
+
+      function extractSecondCellLinks(Row) {
+          var urls = []; // array to store data
+          $(Row).each(function () {
+              var secondCellLink = getSecondCellLink(this);
+              if(secondCellLink){  // Push into array only if the link exists
+                  urls.push(secondCellLink);
+              }
+          });
+          return urls;
+      }
+      function extractTds(Row) {
+          var tds = [];
+          $(Row).each(function () {
+              var nextTdText = getNextCell(this);
+              if (nextTdText) {
+                  tds.push(nextTdText);
+              }
+          });
+          return tds;
+      }
+      function getNextCell(rowElement){
+          var nextCell = $(rowElement).find('td:eq(0)');
+          var text = $(nextCell).text();
+          return text ? text.replace(/\n+/g, "\n"): null;
+      }
+      function getSecondCellLink(rowElement) {
+          var secondCell = $(rowElement).find('td:eq(1)');
+          var link = $(secondCell).find('a').attr('href');
+          return link ? link.replace(/ /g, "+") : null;
+      }
+
+      function copyToClipboard(text) {
+          try {
+              var el = document.createElement('textarea');
+              el.value = text;
+              el.setAttribute('readonly', '');
+              el.style.position = 'absolute';
+              el.style.left = '-9999px';
+              document.body.appendChild(el);
+              el.select();
+              document.execCommand('copy');
+              document.body.removeChild(el);
+          } catch (err) {
+              alert('Failed to copy: '+ err);
+          }
+      }
+  </script>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<% if notice.present? %>
+  <div class="text-center mb-3" id="notice">
+    <%= notice %>
+  </div>
+<% end %>
+
+<table class="table table-borderless table-dark mx-auto" style="width:450px;">
+  <tr>
+    <th scope="row" class="text-end">Day:</th>
+    <td class="text-start align-middle"><%= @list.day %></td>
+  </tr>
+  <tr>
+    <th scope="row" class="text-end">Date:</th>
+    <td class="text-start align-middle"><%= @list.date %></td>
+  </tr>
+  <tr>
+    <th scope="row" class="text-end">Title:</th>
+    <td class="text-start align-middle"><%= @list.title %></td>
+  </tr>
+  <tr>
+    <th scope="row" class="text-end">Msg:</th>
+    <td class="text-start align-top">
+      <% msg_list = @list.msg&.split("\n")&.reject(&:blank?) || [] %>
+      <% if msg_list.any? %>
+        <ul>
+          <% msg_list.each do |msg| %>
+            <li><%= h msg %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <em>No messages</em>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<table class="table table-borderless table-dark mx-auto" style="width:450px;">
+  <tr>
+    <td class="text-end"><%= link_to 'Edit', edit_list_path(@list), class: "btn btn-outline-light btn-sm" %></td>
+    <td class="text-start"><%= link_to 'Back', lists_path(page: @page), class: "btn btn-outline-light btn-sm" %></td>
+  </tr>
+</table>

@@ -1,0 +1,54 @@
+// Place all the styles related to the Lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.center {
+    text-align: center;
+}
+.list-row {
+    height: 5px;
+    text-align: center;
+}
+
+.list-title-right {
+    text-align: right;
+}
+
+.list-action-left {
+    text-align: left;
+}
+.page-title {
+    color: white;
+    text-align: center;
+}
+
+.list-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 15.83%;
+    border-spacing: 5px;
+}
+
+.action-row {
+    height: 5px;
+    text-align: center;
+}
+
+.date-row {
+    height: 5px;
+    text-align: center;
+}
+
+.messages-container {
+    text-align: center;
+    padding: 1px;
+    border-spacing: 5px;
+}
+
+.message-links-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-row {
+    height: 5px;
+}
