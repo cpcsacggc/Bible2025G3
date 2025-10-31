@@ -40,12 +40,6 @@ yarn-debug.log*
 .yarn-integrity
 
 .ruby-version
-/.idea/BibleRead_Test.iml
-/.idea/dataSources.xml
-/.idea/misc.xml
-/.idea/modules.xml
-/db/mydb03132021.sql
-/.idea/vcs.xml
 /.idea/
 
 # Project exclude paths
