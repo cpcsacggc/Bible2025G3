@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.3.10
 
 * System dependencies
 
@@ -20,5 +20,8 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
+  gem install rails 7.1.2
+  bundle install
+  bundle update
+  rails -s
 * ...
