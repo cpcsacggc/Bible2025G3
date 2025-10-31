@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-*
+#/db/*.sqlite3
+#/db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -46,6 +46,7 @@ yarn-debug.log*
 /.idea/modules.xml
 /db/mydb03132021.sql
 /.idea/vcs.xml
+/.idea/
 
 # Project exclude paths
 /log/
